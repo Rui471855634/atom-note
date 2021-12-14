@@ -7,4 +7,4 @@
 - [x] add tailwindcss support
 - [x] add pug support
 - [x] add element-ui support
-- [ ] add vue router support
+- [x] add vue router support
