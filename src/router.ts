@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
 const routes = [
-  { path: '/', component: () => import('@/app.vue') },
+  { path: '/', component: () => import('@/App.vue') },
   // { path: '/about', component: About },
 ]
 
