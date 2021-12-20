@@ -2,23 +2,26 @@
 .atom-note.flex.w-full
   Aside
   .main.flex-1
-    router-view 
+    router-view
 </template>
 
 <script lang="ts">
 import Aside from '@/components/aside.vue'
+import { computed } from 'vue';
 export default {
   name: 'App',
   setup() {
+    
   },
   components: {
-    Aside
+    Aside,
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .main {
-  background: var(--el-bg-color-base);
+  background: var(--el-bg-color);
+  width: calc(100vw - 56px)
 }
 </style>

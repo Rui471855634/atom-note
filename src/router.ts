@@ -1,8 +1,17 @@
-import VueRouter from 'vue-router'
+import * as VueRouter from 'vue-router'
+console.log('VueRouter', VueRouter)
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
 const routes = [
-  { path: '/', component: () => import('@/App.vue') },
+  { 
+    path: '/', 
+    component: () => import('@/App.vue'),
+    redirect: '/main',
+  },
+  {
+    path: '/main',
+    component: () => import('@/views/main/index.vue')
+  }
   // { path: '/about', component: About },
 ]
 
@@ -13,3 +22,5 @@ const router = VueRouter.createRouter({
   history: VueRouter.createWebHashHistory(),
   routes, // `routes: routes` 的缩写
 })
+
+export default router

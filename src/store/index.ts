@@ -1,8 +1,8 @@
 import { createStore } from 'vuex'
-import { ElLoading, ILoadingInstance } from 'element-plus'
+import { ElLoading } from 'element-plus'
 
 export interface baseState {
-  loading: ILoadingInstance | null
+  loading: any | null
 }
 
 export default createStore({

@@ -7,7 +7,7 @@ export default {
   name: 'aside',
   setup() {
     return {
-      name: 'aside'
+      name: 'vc-aside'
     }
   }
 }
