@@ -7,11 +7,9 @@
 
 <script lang="ts">
 import Aside from '@/components/aside.vue'
-import { computed } from 'vue';
 export default {
   name: 'App',
   setup() {
-    
   },
   components: {
     Aside,
