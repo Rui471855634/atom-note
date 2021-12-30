@@ -52,8 +52,8 @@ export default {
         title: todoVal.value,
         important: false,
         completed: false,
-        date: dayjs().format('MM-DD'),
-        time: dayjs().format('HH:mm'),
+        date: getDateTime('MM-DD'),
+        time: getDateTime('HH:mm'),
         createTime: getDateTime(),
       }
       handleAdd(msg)
