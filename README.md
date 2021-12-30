@@ -16,6 +16,8 @@
     - [ ] todo list
     - [ ] todo detail andd edit dialog
     - [ ] done list and history data
+- [ ] add indexeddb support(待办、用户、历史等数据用indexeddb存储)
+- [ ] 附件缓存放在用户本地，使用ipc通信写于硬盘
 
 ## Bug fixes(only for important bug)
 1. [x] fix bug: vue3和sass-loader^12版本不兼容，报错：`TypeError: this.getOptions is not a function`，需降低sass-loader版本

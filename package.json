@@ -12,7 +12,11 @@
   },
   "main": "background.js",
   "dependencies": {
+    "dayjs": "^1.10.7",
     "element-plus": "^1.2.0-beta.6",
+    "nanoid": "^3.1.30",
+    "nf-tool": "0.0.6",
+    "nf-web-storage": "^0.2.3",
     "vue": "^3.2.16",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
