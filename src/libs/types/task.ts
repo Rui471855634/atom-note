@@ -10,3 +10,7 @@ export interface ITaskData {
   createTime: string,
   updateTime?: string,
 }
+
+export interface ITaskSearchParams {
+  createTime?: any
+}

@@ -4,10 +4,11 @@ import { app, protocol, BrowserWindow, Menu, MenuItem, globalShortcut } from 'el
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'
-const isDevelopment = process.env.NODE_ENV !== 'production'
+import Shotcut from '../server/shotcut'
 
-// 主window
-let mainWindow: BrowserWindow | null = null
+let sc: Shotcut
+
+const isDevelopment = process.env.NODE_ENV !== 'production'
 
 const resolve = (pathStr: string) => {
   return path.join(__dirname, pathStr)
@@ -24,6 +25,7 @@ async function createWindow() {
     show: false,
     width: process.env.NODE_ENV !== 'production' ? 1400 : 960,
     height: 700,
+    // frame: false, // 无边框 未来支持
     webPreferences: {
       // preload 预加载，在window创建后和h5内容加载之前被调用
       preload: resolve('../server/preload.ts'),
@@ -39,7 +41,10 @@ async function createWindow() {
     }
   })
 
-  mainWindow = win
+  sc = new Shotcut(win)  
+
+  sc.bind()
+
   win.on('ready-to-show', () => {
     win.show()
   })
@@ -80,6 +85,7 @@ app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  console.log('activate')
 })
 
 // This method will be called when Electron has finished
@@ -94,10 +100,7 @@ app.on('ready', async () => {
       console.error('Vue Devtools failed to install:', e.toString())
     }
   }
-  // 全局快捷键
-  await globalShortcut.register('CommandOrControl+Shift+E', () => {
-    mainWindow?.show()
-  })
+  
   createWindow()
 })
 

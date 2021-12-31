@@ -5,6 +5,7 @@ import 'element-plus/dist/index.css'
 import store from './store'
 import VueRouter from '@/router'
 import dbHelp from '@/libs/db'
+import { focusInput } from '@/libs/ipc'
 const app = createApp(App)
 
 app.use(store)
@@ -18,3 +19,5 @@ dbHelp((help: any) => {
   // indexedDB create success
   console.log('indexedDB create success', help)
 })
+
+focusInput()

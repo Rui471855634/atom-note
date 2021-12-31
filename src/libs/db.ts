@@ -4,7 +4,7 @@ import { dbCreateHelp } from 'nf-web-storage'
 // 引入数据库数据
 const db = {
   dbName: 'atom-note',
-  ver: 5
+  ver: 1
 }
 
 /**

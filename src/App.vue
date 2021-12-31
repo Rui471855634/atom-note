@@ -1,7 +1,7 @@
 <template lang="pug">
 .atom-note.flex.w-full
   Aside
-  .main.flex-1
+  .main.flex-1.pb-8
     router-view
 </template>
 

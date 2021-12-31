@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // window绑定ipcRenderer
 // @ts-ignore
-// window.ipcRenderer = require('electron').ipcRenderer
+window.ipcRenderer = require('electron').ipcRenderer
 /** 
  * 绑定window上下文示例
  * 虽然预加载脚本与其所附加的渲染器在全局共享着一个 window 变数，但您并不能从中直接附加任何变数到 window 之中，因为 contextIsolation 是默认的。
