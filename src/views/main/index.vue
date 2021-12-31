@@ -3,7 +3,7 @@
   TaskHeader(@search="fetchList")
   .todo-create-wrap.pb-5
     .input-wrap
-      ElInput(autofocus v-model="todoVal" placeholder="请输入待办事项，按回车键快速添加" @keyup.enter.native="addTask")
+      ElInput(id="autofocus" autofocus v-model="todoVal" placeholder="请输入待办事项，按回车键快速添加" @keyup.enter.native="addTask")
   .todo-list-wrap.pt-5
     TodoList(:data="todoData" todo @refresh="fetchList")
   Refresh(@click="() => fetchList()")
@@ -21,6 +21,7 @@ import { sortTaskList } from '@/utils/task'
 import Refresh from '@/components/refresh.vue'
 // @ts-ignore
 import TaskHeader from '@/components/task/task-header.vue'
+import { focusInput } from '@/libs/ipc'
 // 由于和开发IDE的vetur功能冲突，因此所有ref、reactive的引入都要ts-ignore
 // @ts-ignore
 import { ref, reactive } from 'vue'

@@ -4,7 +4,7 @@ import { FOCUS_INPUT } from '../../../constants/ipc'
 export const ipcRenderer = window.ipcRenderer
 
 export const focusInput = () => {
-  ipcRenderer.on(FOCUS_INPUT, (event: any, arg: any) => {
+  ipcRenderer.on(FOCUS_INPUT, () => {
     (document.querySelector('#autofocus') as HTMLInputElement)?.focus()
   });
 }
