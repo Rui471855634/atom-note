@@ -1,4 +1,5 @@
 import dayjs, { Dayjs } from 'dayjs'
+import { platform } from '@/libs/ipc'
 
 export function getDateTime(): string
 export function getDateTime(date: Dayjs): string
@@ -13,3 +14,13 @@ export function getDateTime(arg1?: Dayjs | string, arg2: string = 'YYYY-MM-DD HH
     return arg1.format(arg2)
   }
 }
+
+export const isNewUser = () => {
+  const isNewUser = localStorage.getItem('isNewUser_0.0.1-beta.1') ? false : true
+  if (isNewUser) {
+    localStorage.setItem('isNewUser_0.0.1-beta.1', 'true')
+  }
+  return isNewUser
+}
+
+export const ctrlName = platform === 'mac' ? 'Command' : 'Ctrl'

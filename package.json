@@ -1,6 +1,6 @@
 {
   "name": "atom-note",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.2-beta",
   "scripts": {
     "serve": "vite preview",
     "build": "vite build",

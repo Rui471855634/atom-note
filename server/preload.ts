@@ -4,18 +4,23 @@
  */
 window.addEventListener('DOMContentLoaded', () => {
   // todo
+  console.log('preload.ts')
 })
 
 // window绑定ipcRenderer
 // @ts-ignore
-window.ipcRenderer = require('electron').ipcRenderer
+// window.ipcRenderer = require('electron').ipcRenderer
 /** 
  * 绑定window上下文示例
  * 虽然预加载脚本与其所附加的渲染器在全局共享着一个 window 变数，但您并不能从中直接附加任何变数到 window 之中，因为 contextIsolation 是默认的。
  * 实现h5中console.log(window.myAPI) => { desktop: true }
 */
-// const { contextBridge } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
 
-// contextBridge.exposeInMainWorld('myAPI', {
-//   desktop: true
-// })
+contextBridge.exposeInMainWorld('electron', {
+  ipcRenderer: {
+    ...ipcRenderer,
+    on: (eventName, callback) => ipcRenderer.on(eventName, callback)
+  },
+  platform: process.platform
+})
