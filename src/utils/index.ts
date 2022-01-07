@@ -1,5 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { platform } from '@/libs/ipc'
+import axios from '@/libs/axios'
 
 export function getDateTime(): string
 export function getDateTime(date: Dayjs): string
@@ -24,3 +25,16 @@ export const isNewUser = () => {
 }
 
 export const ctrlName = platform === 'mac' ? 'Command' : 'Ctrl'
+
+export const hasNewVersion = async (version: string) => {
+  let res: any = await axios.get('https://raw.githubusercontent.com/AlanOzil/atom-note/master/package.json', {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  if (res && (res.version !== version) && !localStorage.getItem(`atom-note-version_${res.version}`)) {
+    localStorage.setItem(`atom-note-version_${res.version}`, 'true')
+    return true
+  }
+  return false
+}
