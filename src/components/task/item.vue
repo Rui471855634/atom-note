@@ -9,8 +9,8 @@
     ElCheckbox(v-model="task.completed" @change="handleUpdate")
   .task-item__title.flex.items-center.flex-1.pl-5.overflow-hidden(:class="{'is-important': task.important}")
     .task-info.block.w-full
-      .task-title.truncate(v-text="task.title")
-      .task-content.mt-1.truncate(v-if="task.content") {{ task.content }}
+      .task-title.truncate(v-text="task.title" :title="task.title")
+      .task-content.mt-1.truncate(v-if="task.content" :title="task.content") {{ task.content }}
   .task-item__time.flex.items-center.justify-end.w-20
     span.mr-1(v-text="task.date" v-if="task.date !== today")
     span(v-text="task.time")
