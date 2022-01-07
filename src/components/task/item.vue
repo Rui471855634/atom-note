@@ -16,67 +16,52 @@
     span(v-text="task.time")
   .task-item__button.flex.items-center.justify-end
     .button-wrap.flex.items-center.hidden
-      ElIcon(color="var(--el-color-danger)" @click.prevent="handleDelete" name="delete")
+      ElIcon.cursor-pointer(color="var(--el-color-danger)" @click.prevent="handleDelete" name="delete")
         Delete
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 // @ts-ignore
-import { reactive, ref, defineEmits } from 'vue'
-import { ElCheckbox, ElIcon } from 'element-plus'
-import { useStores } from 'nf-web-storage'
-import { getDateTime } from '@/utils'
-import { Delete } from '@element-plus/icons-vue'
-export default {
-  name: 'task-item',
-  props: {
-    item: Object,
-    even: {
-      default: false,
-      type: Boolean
-    },
-    todo: {
-      default: false,
-      type: Boolean
-    },
-    checkbox: {
-      default: true,
-      type: Boolean
-    }
-  },
-  setup(props: any) {
-    const itemRef = ref()
-    const task = reactive(props.item)
-    const { taskData } = useStores()
-    const today = getDateTime('MM-DD')
-    const emit = defineEmits(['refresh'])
-    // 数据更新
-    const handleUpdate = async () => {
-      console.log(task.completed)
-      let res = await taskData.set(task)
-      console.log(res)
-    }
-    
-    const handleDelete = async () => {
-      let res = await taskData.del(task)
-      emit('refresh')
-    }
+import { reactive, ref, defineEmits, defineProps } from "vue";
+import { ElCheckbox, ElIcon } from "element-plus";
+import { useStores } from "nf-web-storage";
+import { getDateTime } from "@/utils";
+import { Delete } from "@element-plus/icons-vue";
+const emit = defineEmits(["refresh"]);
 
-    return {
-      props,
-      task,
-      today,
-      itemRef,
-      handleUpdate,
-      handleDelete
-    }
+const props = defineProps({
+  item: {
+    type: Object,
+    default: () => ({}),
   },
-  components: {
-    ElCheckbox,
-    ElIcon,
-    Delete
-  }
-}
+  even: {
+    default: false,
+    type: Boolean,
+  },
+  todo: {
+    default: false,
+    type: Boolean,
+  },
+  checkbox: {
+    default: true,
+    type: Boolean,
+  },
+});
+const itemRef = ref();
+const task = reactive(props.item);
+const { taskData } = useStores();
+const today = getDateTime("MM-DD");
+// 数据更新
+const handleUpdate = async () => {
+  console.log(task.completed);
+  let res = await taskData.set(task);
+  console.log(res);
+};
+
+const handleDelete = async () => {
+  let res = await taskData.del(task)
+  emit("refresh");
+};
 </script>
 
 <style lang="scss" scoped>
@@ -101,7 +86,7 @@ export default {
     &.is-important {
       font-weight: bold;
       .task-title::before {
-        content: '!';
+        content: "!";
         color: var(--el-color-danger);
         font-weight: bold;
         font-style: italic;
@@ -127,9 +112,9 @@ export default {
   }
 
   &__button {
-    width: 20px
+    width: 20px;
   }
-  
+
   &:hover {
     .button-wrap {
       display: flex;
