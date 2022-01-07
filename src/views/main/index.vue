@@ -21,10 +21,9 @@ import { sortTaskList } from '@/utils/task'
 import Refresh from '@/components/refresh.vue'
 // @ts-ignore
 import TaskHeader from '@/components/task/task-header.vue'
-import { focusInput } from '@/libs/ipc'
 // 由于和开发IDE的vetur功能冲突，因此所有ref、reactive的引入都要ts-ignore
 // @ts-ignore
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import dayjs from 'dayjs'
 export default {
   name: 'main',
@@ -34,7 +33,7 @@ export default {
     const { taskData } = useStores()
     console.log('taskData', taskData)
     let searchParams = reactive({})
-
+    
     // 数据查询
     const fetchList = async (params: ITaskSearchParams = {}) => {
       searchParams = { ...searchParams, ...params }
@@ -70,6 +69,10 @@ export default {
 
     fetchList()
     
+    onMounted(() => {
+      (document.querySelector('#autofocus') as HTMLInputElement)?.focus()
+    })
+
     return {
       todoVal,
       todoData,

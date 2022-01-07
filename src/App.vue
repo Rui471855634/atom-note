@@ -3,18 +3,12 @@
   Aside
   .main.flex-1.pb-8
     router-view
+  Welcome
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Aside from '@/components/aside.vue'
-export default {
-  name: 'App',
-  setup() {
-  },
-  components: {
-    Aside,
-  },
-};
+import Welcome from '@/components/welcome.vue'
 </script>
 
 <style lang="scss" scoped>
