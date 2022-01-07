@@ -10,13 +10,13 @@
 - [x] add vue router support
 - [x] add vuex support
 - [ ] add axios support
-- [ ] page design
+- [-] page design
     - [x] aside
     - [x] todo input 
-    - [ ] todo list
+    - [x] todo list
     - [ ] todo detail andd edit dialog
-    - [ ] done list and history data
-- [ ] add indexeddb support(待办、用户、历史等数据用indexeddb存储)
+    - [x] done list and history data
+- [x] add indexeddb support(待办、用户、历史等数据用indexeddb存储)
 - [ ] 附件缓存放在用户本地，使用ipc通信写于硬盘
 
 ## Bug fixes(only for important bug)

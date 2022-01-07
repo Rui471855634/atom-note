@@ -4,43 +4,29 @@
   ElEmpty(:image-size="200" v-if="!data.length")
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 // @ts-ignore
-import Item from './item.vue'
-import { ElEmpty } from 'element-plus'
-import { defineEmits } from 'vue'
-export default {
-  name: 'task-list',
-  props: {
-    data: Array,
-    todo: {
-      default: false,
-      type: Boolean
-    },
-    checkbox: {
-      default: true,
-      type: Boolean
-    }
+import Item from "./item.vue";
+import { ElEmpty } from "element-plus";
+import { defineEmits, defineProps } from "vue";
+const props = defineProps({
+  data: Array,
+  todo: {
+    default: false,
+    type: Boolean,
   },
-  setup(props: any) {
-    const { data, todo, checkbox } = props
-    const emit = defineEmits(['refresh'])
+  checkbox: {
+    default: true,
+    type: Boolean,
+  },
+});
 
-    const handleRefresh = () => {
-      emit('refresh')
-    }
-    return {
-      data,
-      todo,
-      checkbox,
-      handleRefresh
-    }
-  },
-  components: {
-    Item,
-    ElEmpty
-  }
-}
+const { data, todo, checkbox } = props;
+const emit = defineEmits(["refresh"]);
+
+const handleRefresh = () => {
+  emit("refresh");
+};
 </script>
 
 <style lang="scss" scoped>
