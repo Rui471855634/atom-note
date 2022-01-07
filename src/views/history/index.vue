@@ -5,7 +5,7 @@
     .input-wrap
       ElInput(id="autofocus" autofocus v-model="keyword" placeholder="请输入关键字查询" @keyup.enter.native="() => searchTask()")
   .history-list-wrap.pt-5
-    TodoList(:data="todoData" :checkbox="false")
+    TodoList(:data="todoData" :checkbox="false" @refresh="() => searchTask()")
   Refresh(@click="() => searchTask()")
 </template>
 
