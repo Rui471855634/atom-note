@@ -1,6 +1,8 @@
 {
   "name": "atom-note",
   "version": "0.1.0-beta",
+  "desktopName": "Atom Note",
+  "productName": "Atom Note",
   "scripts": {
     "serve": "vite preview",
     "build": "vite build",

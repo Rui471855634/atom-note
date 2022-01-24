@@ -3,7 +3,7 @@
   TaskHeader(@search="fetchList")
   .todo-create-wrap.pb-5
     .input-wrap
-      ElInput(id="autofocus" autofocus v-model="todoVal" placeholder="请输入待办事项，按回车键快速添加" @keyup.enter.native="addTask")
+      ElInput(id="autofocus" autofocus v-model="todoVal" placeholder="请输入待办事项，按回车键快速添加" @keypress.enter.native="addTask")
   .todo-list-wrap.pt-5
     TodoList(:data="todoData" todo @refresh="() => fetchList()")
   Refresh(@click="() => fetchList()")
@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import { ElInput } from "element-plus";
 import TodoList from "@/components/task/list.vue";
-import TodoData from "@/mock/todoList";
+// import TodoData from "@/mock/todoList";
 import { useStores } from "nf-web-storage";
 import { ITaskData, ITaskSearchParams } from "@/libs/types/task";
 import { nanoid } from "nanoid";
