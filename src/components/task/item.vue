@@ -1,13 +1,8 @@
 <template lang="pug">
-//- 任务列表的列表项
-//-   1、完成状态checkbox
-//-   2、(优先级)任务标题
-//-   3、加入时间，默认只显示时间，日期是否显示待定
-//-   4、操作，默认隐藏，悬停显示
 .task-item.flex.flex-1.items-center.px-5.py-3(:class="{'even-row': props.even, 'is-todo-done-item': props.todo && task.completed}")
   .task-item__checkbox.flex.items-center.justify-center.w-5(v-if="props.checkbox")
     ElCheckbox(v-model="task.completed" @change="handleUpdate")
-  .task-item__title.flex.items-center.flex-1.pl-5.overflow-hidden(:class="{'is-important': task.important}")
+  .task-item__title.flex.items-center.flex-1.pl-5.overflow-hidden(:class="{'is-important': task.important}" @click="handleDetail")
     .task-info.block.w-full
       .task-title.truncate(v-text="task.title" :title="task.title")
       .task-content.mt-1.truncate(v-if="task.content" :title="task.content") {{ task.content }}
@@ -27,7 +22,11 @@ import { ElCheckbox, ElIcon } from "element-plus";
 import { useStores } from "nf-web-storage";
 import { getDateTime } from "@/utils";
 import { Delete } from "@element-plus/icons-vue";
-const emit = defineEmits(["refresh"]);
+const emit = defineEmits(["refresh", "detail"]);
+
+const handleDetail = () => {
+  emit("detail", task);
+}
 
 const props = defineProps({
   item: {

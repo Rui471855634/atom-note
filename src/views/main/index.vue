@@ -20,10 +20,10 @@ import { getDateTime } from "@/utils/index";
 import { sortTaskList } from "@/utils/task";
 import Refresh from "@/components/refresh.vue";
 // @ts-ignore
-import TaskHeader from "@/components/task/task-header.vue";
+import TaskHeader from "@/components/task-header/index.vue";
 // 由于和开发IDE的vetur功能冲突，因此所有ref、reactive的引入都要ts-ignore
 // @ts-ignore
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, nextTick } from "vue";
 import dayjs from "dayjs";
 
 const todoVal = ref("");
@@ -43,10 +43,10 @@ const fetchList = async (params: ITaskSearchParams = {}) => {
       ...searchParams /*createTime: [414, getDateTime(dayjs().subtract(1, 'day'))]*/,
     }),
   ]);
-  let list = [...impList, ...norList];
   // let list = await taskData.list({ completed: [401, false] })
   todoData.length = 0;
-  todoData.push(...sortTaskList(list));
+  await nextTick()
+  todoData.push(...sortTaskList(impList), ...sortTaskList(norList));
 };
 
 // 数据保存

@@ -19,7 +19,7 @@ import { useStores } from 'nf-web-storage'
 import { sortTaskList } from '@/utils/task'
 import { ITaskData, ITaskSearchParams } from '@/libs/types/task'
 // @ts-ignore
-import TaskHeader from '@/components/task/task-header.vue'
+import TaskHeader from '@/components/task-header/index.vue'
 let todoData = reactive([] as ITaskData[])
 const keyword = ref('')
 let searchParams = reactive({})
