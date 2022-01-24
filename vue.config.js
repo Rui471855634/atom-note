@@ -5,6 +5,15 @@ const resolve = (pathStr) => {
 }
 
 module.exports = {
+  configureWebpack: {
+    module: {
+      rules: [
+        { 
+          test: /\.(js|mjs)$/, loader: "babel-loader", include: [resolve('src'), resolve('node_modules/element-plus')]
+        }
+      ]
+    }
+  },
   pluginOptions: {
     electronBuilder: {
       preload: resolve('./server/preload.ts'),
