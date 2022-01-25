@@ -1,6 +1,7 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { platform } from '@/libs/ipc'
 import axios from '@/libs/axios'
+import { default as packageDefault } from '../../package.json'
 
 export function getDateTime(): string
 export function getDateTime(date: Dayjs): string
@@ -26,7 +27,9 @@ export const isNewUser = () => {
 
 export const ctrlName = platform === 'mac' ? 'Command' : 'Ctrl'
 
-export const hasNewVersion = async (version: string) => {
+export const hasNewVersion = async () => {
+  let version: string = packageDefault.version
+  console.log('%c当前版本为：', 'color: #fff;background: green', version)
   let res: any = await axios.get('https://raw.githubusercontent.com/AlanOzil/atom-note/master/package.json', {
     headers: {
       'Content-Type': 'application/json'

@@ -8,18 +8,12 @@ ElDialog(v-model="needUpdate" width="400px" title="有新版本啦！")
 
 <script lang="ts" setup>
 import { ElDialog, ElLink } from 'element-plus';
-import { ref, onMounted, defineProps } from 'vue';
+import { ref, onMounted } from 'vue';
 import { hasNewVersion } from '@/utils'
-const props = defineProps({
-  version: {
-    default: '',
-    type: String,
-  },
-})
 const needUpdate = ref(false)
 onMounted(async () => {
   if (process.env.NODE_ENV === 'development') return;
-  const hasNew = await hasNewVersion(props.version);
+  const hasNew = await hasNewVersion();
   if (hasNew) {
     needUpdate.value = true;
   }
