@@ -28,7 +28,9 @@ async function createWindow() {
     minWidth: 800,
     height: 700,
     minHeight: 600,
-    // frame: false, // 无边框 未来支持
+    frame: false, // 无边框
+    autoHideMenuBar: true,
+    titleBarStyle: 'hidden',
     webPreferences: {
       // preload 预加载，在window创建后和h5内容加载之前被调用
       preload: resolve('../server/preload.ts'),

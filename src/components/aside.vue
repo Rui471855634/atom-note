@@ -1,6 +1,6 @@
 <template lang="pug">
-.aside.pt-20
-  .aside-menu.flex.flex-col.items-center
+.aside
+  .aside-menu.flex.flex-col.items-center.pt-16
     #main.aside-menu__item.w-full(:class="{'active': $route.name === 'main'}")
       router-link.py-4.my-2.flex.items-center.justify-center.w-full.h-full(to="main")
         svg(class="icon" width="200px" height="200.00px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg")
@@ -18,14 +18,13 @@
 // @ts-ignore
 import { reactive, ref } from 'vue'
 import { useRoute } from 'vue-router'
-
 // @ts-ignore
 const $route = useRoute()
 </script>
 
 <style lang="scss" scoped>
 .aside {
-  width: 56px;
+  width: 68px;
   min-height: 100vh;
   background-color: var(--el-color-primary-light-3);
 }

@@ -1,5 +1,5 @@
 <template lang="pug">
-.main-wrap.p-5.h-full
+.main-wrap.p-5.pb-12
   TaskHeader(@search="fetchList")
   .todo-create-wrap.pb-5
     .input-wrap
