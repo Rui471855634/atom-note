@@ -10,6 +10,8 @@ let sc: Shotcut
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
+const isMac = process.platform === 'darwin'
+
 const resolve = (pathStr: string) => {
   // @ts-ignore __static is a global variable
   return path.join(__static, pathStr)
