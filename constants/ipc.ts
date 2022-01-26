@@ -1,1 +1,6 @@
 export const FOCUS_INPUT = 'FOCUS_INPUT'
+export const WIN_MINIMIZE = 'WIN_MINIMIZE'
+export const WIN_MAXIMIZE = 'WIN_MAXIMIZE'
+export const WIN_UNMAXIMIZE = 'WIN_UNMAXIMIZE'
+export const WIN_CLOSE = 'WIN_CLOSE'
+export const WIN_IS_MAXIMIZE = 'WIN_IS_MAXIMIZE'

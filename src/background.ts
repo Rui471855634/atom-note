@@ -5,6 +5,7 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'
 import Shotcut from '../server/shotcut'
+import { bindWindowsEvent } from '../server/win'
 
 let sc: Shotcut
 
@@ -32,7 +33,7 @@ async function createWindow() {
     minHeight: 600,
     frame: false, // 无边框
     autoHideMenuBar: true,
-    titleBarStyle: 'hidden',
+    titleBarStyle: isMac ? 'hidden' : 'default',
     webPreferences: {
       // preload 预加载，在window创建后和h5内容加载之前被调用
       preload: resolve('../server/preload.ts'),
@@ -47,6 +48,8 @@ async function createWindow() {
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
     }
   })
+
+  bindWindowsEvent(win)
 
   sc = new Shotcut(win)  
 

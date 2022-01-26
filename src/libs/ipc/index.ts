@@ -1,4 +1,4 @@
-import { FOCUS_INPUT } from '../../../constants/ipc'
+import { FOCUS_INPUT, WIN_IS_MAXIMIZE } from '../../../constants/ipc'
 
 // @ts-ignore
 // export const ipcRenderer = window.ipcRenderer
@@ -15,4 +15,9 @@ export const focusInput = () => {
       location.href = '#/main';
     }
   });
+}
+
+// 获取主窗体实例
+export const isMaximize = () => {
+  return ipcRenderer.invoke(WIN_IS_MAXIMIZE)
 }
