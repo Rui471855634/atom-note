@@ -43,13 +43,7 @@ const handleClose = () => {
 
 <style lang="scss" scoped>
 .win-tool {
-  float: right;
-  display: flex;
-  flex-direction: row;
-  justify-items: center;
-  pointer-events: auto;
-  z-index: 100;
-
+  -webkit-app-region: no-drag;
   a {
     width: 40px;
     height: 25px;
