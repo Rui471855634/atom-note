@@ -4,7 +4,6 @@
     title="详情"
     :width="360"
     close-on-press-escape
-    :close-on-click-modal="false"
     :before-close="handleClose")
     ElForm(
       ref="formRef"
