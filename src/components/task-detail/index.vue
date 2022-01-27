@@ -53,7 +53,12 @@ const props = defineProps({
 })
 
 const handleShow = (_task: ITaskData) => {
-  Object.assign(task, _task);
+  Object.assign(task, {
+    content: '',
+    important: false,
+    updateTime: null,
+    createTime: null
+  }, _task);
   dialogVisible.value = true;
   hasChange.value = false;
 };
