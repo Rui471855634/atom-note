@@ -1,5 +1,5 @@
 <template lang="pug">
-.history-page.p-5.h-full
+.history-page.p-5.pb-12
   TaskHeader(@search="searchTask" title="历史记录")
   .history-wrap.pb-5
     .input-wrap

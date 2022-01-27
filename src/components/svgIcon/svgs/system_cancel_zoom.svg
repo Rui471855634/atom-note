@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>导航/标题栏/取消最大化16px</title>
+    <desc>Created with Sketch.</desc>
+    <g id="导航/标题栏/取消最大化16px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M14,2 L14,11 L11,11 L11,10 L13,10 L13,3 L6,3 L6,5 L5,5 L5,2 L14,2 Z" id="Combined-Shape" fill="#767C85"></path>
+        <path d="M11,5 L11,14 L2,14 L2,5 L11,5 Z M10,6 L3,6 L3,13 L10,13 L10,6 Z" id="矩形" fill="#767C85"></path>
+    </g>
+</svg>

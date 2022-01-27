@@ -15,12 +15,14 @@ window.addEventListener('DOMContentLoaded', () => {
  * 虽然预加载脚本与其所附加的渲染器在全局共享着一个 window 变数，但您并不能从中直接附加任何变数到 window 之中，因为 contextIsolation 是默认的。
  * 实现h5中console.log(window.myAPI) => { desktop: true }
 */
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer, app } = require('electron')
 
 contextBridge.exposeInMainWorld('electron', {
   ipcRenderer: {
     ...ipcRenderer,
     on: (eventName, callback) => ipcRenderer.on(eventName, callback)
   },
-  platform: process.platform
+  platform: process.platform,
+  isMaximized: () => {},
+  isFullScreen: () => {},
 })

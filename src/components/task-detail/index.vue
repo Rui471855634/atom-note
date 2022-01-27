@@ -4,7 +4,6 @@
     title="详情"
     :width="360"
     close-on-press-escape
-    :close-on-click-modal="false"
     :before-close="handleClose")
     ElForm(
       ref="formRef"
@@ -18,8 +17,8 @@
         ElInput(v-model="task.title" autofocus)
       ElFormItem(label="内容" prop="content")
         ElInput(v-model="task.content" type="textarea")
-      ElFormItem(label="状态" prop="completed")
-        ElSwitch(v-model="task.completed" active-color="#13ce66")
+      //- ElFormItem(label="状态" prop="completed")
+      //-   ElSwitch(v-model="task.completed" active-color="#13ce66")
       ElFormItem(label="重要" prop="important")
         ElSwitch(v-model="task.important" active-color="#13ce66")
       ElFormItem(label="修改时间")
@@ -53,7 +52,12 @@ const props = defineProps({
 })
 
 const handleShow = (_task: ITaskData) => {
-  Object.assign(task, _task);
+  Object.assign(task, {
+    content: '',
+    important: false,
+    updateTime: null,
+    createTime: null
+  }, _task);
   dialogVisible.value = true;
   hasChange.value = false;
 };

@@ -5,10 +5,13 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'
 import Shotcut from '../server/shotcut'
+import { bindWindowsEvent } from '../server/win'
 
 let sc: Shotcut
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
+
+const isMac = process.platform === 'darwin'
 
 const resolve = (pathStr: string) => {
   // @ts-ignore __static is a global variable
@@ -24,11 +27,13 @@ async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
     show: false,
-    width: process.env.NODE_ENV !== 'production' ? 1400 : 960,
-    minWidth: 800,
+    width: process.env.NODE_ENV !== 'production' ? 1400 : 660,
+    minWidth: 500,
     height: 700,
     minHeight: 600,
-    // frame: false, // 无边框 未来支持
+    frame: false, // 无边框
+    autoHideMenuBar: true,
+    titleBarStyle: isMac ? 'hidden' : 'default',
     webPreferences: {
       // preload 预加载，在window创建后和h5内容加载之前被调用
       preload: resolve('../server/preload.ts'),
@@ -43,6 +48,8 @@ async function createWindow() {
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
     }
   })
+
+  bindWindowsEvent(win)
 
   sc = new Shotcut(win)  
 

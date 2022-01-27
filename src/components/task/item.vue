@@ -2,7 +2,7 @@
 .task-item.flex.flex-1.items-center.px-5.py-3(:class="{'even-row': props.even, 'is-todo-done-item': props.todo && task.completed}")
   .task-item__checkbox.flex.items-center.justify-center.w-5(v-if="props.checkbox")
     ElCheckbox(v-model="task.completed" @change="handleUpdate")
-  .task-item__title.flex.items-center.flex-1.pl-5.overflow-hidden(:class="{'is-important': task.important}" @click="handleDetail")
+  .task-item__title.flex.items-center.flex-1.pl-5.overflow-hidden.cursor-pointer(:class="{'is-important': task.important}" @click="handleDetail")
     .task-info.block.w-full
       .task-title.truncate(v-text="task.title" :title="task.title")
       .task-content.mt-1.truncate(v-if="task.content" :title="task.content") {{ task.content }}
