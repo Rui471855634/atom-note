@@ -27,8 +27,8 @@ async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
     show: false,
-    width: process.env.NODE_ENV !== 'production' ? 1400 : 960,
-    minWidth: 800,
+    width: process.env.NODE_ENV !== 'production' ? 1400 : 660,
+    minWidth: 500,
     height: 700,
     minHeight: 600,
     frame: false, // 无边框
