@@ -4,7 +4,7 @@
     svg-icon(name="system_shrink")
   a.menubar-maximize(@click="handleMaximize")
     svg-icon(:name="props.isMaximized ? 'system_cancel_zoom' : 'system_zoom'")
-  a.menubar-close(@click="handleClose")
+  a.menubar-close(@click="handleMinimize")
     svg-icon(name="system_close")
 </template>
 
