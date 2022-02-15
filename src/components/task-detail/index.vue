@@ -16,7 +16,7 @@
       ElFormItem(label="标题" prop="title")
         ElInput(v-model="task.title" autofocus)
       ElFormItem(label="内容" prop="content")
-        ElInput(v-model="task.content" type="textarea")
+        ElInput(v-model="task.content" type="textarea" :rows="4")
       //- ElFormItem(label="状态" prop="completed")
       //-   ElSwitch(v-model="task.completed" active-color="#13ce66")
       ElFormItem(label="重要" prop="important")
