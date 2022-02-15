@@ -21,7 +21,7 @@ async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
     show: false,
-    icon: resolve('../_icons/icon.png'),
+    icon: resolve('../_icons/logo.png'),
     width: process.env.NODE_ENV !== 'production' ? 1400 : 660,
     minWidth: 500,
     height: 700,
@@ -44,7 +44,7 @@ async function createWindow() {
     }
   })
   if (isMac) {
-    app.dock.setIcon(resolve('../_icons/icon.png'))
+    app.dock.setIcon(resolve('../_icons/logo.png'))
   }
   mainWindow = win
   bindWindowsEvent(win)
@@ -104,7 +104,7 @@ if (!gotTheLock) {
 }
 let tray = null
 app.whenReady().then(() => {
-  tray = new Tray(resolve('../_icons/icon.png'))
+  tray = new Tray(resolve('../_icons/logo_tray.png'))
   const contextMenu = Menu.buildFromTemplate([
     { label: '退出', click: () => { app.quit() } },
   ])

@@ -27,8 +27,9 @@ export const isNewUser = () => {
 
 export const ctrlName = platform === 'mac' ? 'Command' : 'Ctrl'
 
+export const version: string = packageDefault.version
+
 export const hasNewVersion = async () => {
-  let version: string = packageDefault.version
   console.log('%c当前版本为：', 'color: #fff;background: green', version)
   let res: any = await axios.get('https://raw.githubusercontent.com/AlanOzil/atom-note/master/package.json', {
     headers: {
