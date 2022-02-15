@@ -24,6 +24,6 @@ export const bindWindowsEvent = (win: BrowserWindow) => {
   })
   // 关闭
   ipcMain.on(WIN_CLOSE, (evt: IpcMainEvent) => {
-    getWindow(evt)?.close()
+    getWindow(evt)?.hide()
   })
 }

@@ -1,5 +1,5 @@
 'use strict'
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, Menu, Tray } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'
@@ -21,6 +21,7 @@ async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
     show: false,
+    icon: resolve('../_icons/logo_win.png'),
     width: process.env.NODE_ENV !== 'production' ? 1400 : 660,
     minWidth: 500,
     height: 700,
@@ -42,6 +43,9 @@ async function createWindow() {
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
     }
   })
+  if (isMac) {
+    app.dock.setIcon(resolve('../_icons/logo.png'))
+  }
   mainWindow = win
   bindWindowsEvent(win)
   sc = new Shotcut(win)  
@@ -98,6 +102,18 @@ if (!gotTheLock) {
   })
   
 }
+let tray = null
+app.whenReady().then(() => {
+  tray = new Tray(resolve(`../_icons/logo_tray${isMac ? '' : '_win'}.png`))
+  const contextMenu = Menu.buildFromTemplate([
+    { label: '退出', click: () => { app.quit() } },
+  ])
+  tray.setToolTip('Atom Note')
+  tray.setContextMenu(contextMenu)
+  tray.on('click', () => {
+    mainWindow?.show()
+  })
+})
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar

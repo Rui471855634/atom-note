@@ -16,10 +16,10 @@ const searchRange = ref('')
 const emit = defineEmits(['search'])
 
 const options = [{
-  value: '',
+  value: 365 * 100, // 一百年前
   label: '全部'
 }, {
-  value: '1',
+  value: 1, // 一天前
   label: '最近一天'
 }]
 
@@ -30,12 +30,7 @@ const props = defineProps({
   },
 })
 
-const handleChange = (value: string) => {
-  let params = {}
-  if (value === '1') {
-    emit('search', { createTime: [414, getDateTime(dayjs().subtract(1, 'day'))] })
-  } else if (value === '') {
-    emit('search', {})
-  }
+const handleChange = (value: number) => {
+  emit('search', { createTime: [414, getDateTime(dayjs().subtract(value, 'day'))] })
 }
 </script>
